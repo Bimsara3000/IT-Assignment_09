@@ -33,27 +33,135 @@
 <body>
 
 <section>
-    <div class="box" id="b1"></div>
-    <div class="box" id="b2"></div>
-    <div class="box" id="b3"></div>
-    <div class="box" id="b4"></div>
-    <div class="box" id="b5"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
 </section>
 
 <script>
+    const start = () => {
+        let data = ['red','brown','crimson','lightcoral','lightpink'];
+        let reverseData = data.slice();
+        reverseData.reverse();
 
-    let data = ['red','crimson','brown','lightcoral','lightpink'];
+        const updateColor01 = () => {
+            document.getElementsByClassName('box')[0].style.backgroundColor = data[0];
+        }
 
-    const updateColors = () => {
+        const updateColor02 = () => {
+            for (let i = 0, j = 1; i < 2; i++) {
+                document.getElementsByClassName('box')[i].style.backgroundColor = data[j--];
+            }
+        }
 
-        data.map((item, index) => {
-            document.getElementsByClassName('box')[index].style.backgroundColor = item;
-        });
+        const updateColor03 = () => {
+            for (let i = 0, j = 2; i < 3; i++) {
+                document.getElementsByClassName('box')[i].style.backgroundColor = data[j--];
+            }
+        }
 
-        data = data.reverse();
+        const updateColor04 = () => {
+            for (let i = 0, j = 3; i < 4; i++) {
+                document.getElementsByClassName('box')[i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor05 = () => {
+            for (let i = 0, j = 4; i < 5; i++) {
+                document.getElementsByClassName('box')[i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor06 = () => {
+            reverseData.pop();
+            reverseData.unshift('white');
+
+            reverseData.map((item, index) => {
+                document.getElementsByClassName('box')[index].style.backgroundColor = item;
+            });
+        }
+
+        const updateColors = () => {
+            updateColor01();
+            setTimeout(updateColor02, 100);
+            setTimeout(updateColor03, 200);
+            setTimeout(updateColor04, 300);
+            setTimeout(updateColor05, 400);
+
+            for (let i = 0; i < 5; i++) {
+                setTimeout(updateColor06, 500 + (i * 100));
+            }
+        }
+
+        updateColors();
     }
 
-    setInterval(updateColors, 500);
+    const start02 = () => {
+        let data = ['red','brown','crimson','lightcoral','lightpink'];
+        let reverseData = data.slice();
+        reverseData.reverse();
+
+        const updateColor01 = () => {
+            document.getElementsByClassName('box')[4].style.backgroundColor = data[0];
+        }
+
+        const updateColor02 = () => {
+            for (let i = 0, j = 1; i < 2; i++) {
+                document.getElementsByClassName('box')[4-i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor03 = () => {
+            for (let i = 0, j = 2; i < 3; i++) {
+                document.getElementsByClassName('box')[4-i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor04 = () => {
+            for (let i = 0, j = 3; i < 4; i++) {
+                document.getElementsByClassName('box')[4-i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor05 = () => {
+            for (let i = 0, j = 4; i < 5; i++) {
+                document.getElementsByClassName('box')[4-i].style.backgroundColor = data[j--];
+            }
+        }
+
+        const updateColor06 = () => {
+            reverseData.pop();
+            reverseData.unshift('white');
+
+            reverseData.map((item, index) => {
+                document.getElementsByClassName('box')[4-index].style.backgroundColor = item;
+            });
+        }
+
+        const updateColors = () => {
+            updateColor01();
+            setTimeout(updateColor02, 100);
+            setTimeout(updateColor03, 200);
+            setTimeout(updateColor04, 300);
+            setTimeout(updateColor05, 400);
+
+            for (let i = 0; i < 5; i++) {
+                setTimeout(updateColor06, 500 + (i * 100));
+            }
+        }
+
+        updateColors();
+    }
+
+    const lightBar = () => {
+        start();
+        setTimeout(start02, 1000);
+    }
+
+    lightBar();
+    setInterval(lightBar, 2000);
 
 </script>
 </body>
